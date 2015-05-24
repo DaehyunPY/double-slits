@@ -1,8 +1,8 @@
-# ver1 rk
+# ver2 pauli
 
 TARGET = exe
-OBJECTS = fftsg.o sde.o main.o 
-COMMON_MOD = fftsg.f08 sde.f08 main.f08
+OBJECTS = fftsg.o main.o 
+COMMON_MOD = fftsg.f08 main.f08
 
 F08 = /usr/local/bin/gfortran
 FFLAGS = -fimplicit-none -fbounds-check
