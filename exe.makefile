@@ -1,4 +1,4 @@
-# ver3 double slit 1d
+# ver4 double slit 2d
 
 TARGET = exe
 OBJECTS = fftsg.o ch.o main.o 

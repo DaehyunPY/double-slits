@@ -53,9 +53,7 @@ subroutine fft1d(type, fft_input)
 				= cmplx(fft_a(2*(i)),    fft_a(2*(i)    +1), kind = 8)
 		enddo
 	endif
-	do i = 0, n -1
-		fft_input(i) = fft_input(i)/dble(n)**0.5d0
-	enddo
+	fft_input(:) = fft_input(:)/dble(n)**0.5d0
 end subroutine fft1d
 
 
@@ -81,8 +79,8 @@ subroutine fft2d(type, fft_input)
   if(type == +1) then
     do i1 = -n1/2, -1
       do i2 = -n2/2, -1
-        fft_a(2*(n1 +i1), n2/2 +i2) = real(fft_input(n1/2 +i1, n2/2 +i2))
-        fft_a(2*(n1 +i1) +1, n2/2 +i2) = aimag(fft_input(n1/2 +i1, n2/2 +i2))
+        fft_a(2*(n1 +i1), n2 +i2) = real(fft_input(n1/2 +i1, n2/2 +i2))
+        fft_a(2*(n1 +i1) +1, n2 +i2) = aimag(fft_input(n1/2 +i1, n2/2 +i2))
       enddo
       do i2 = 0, n2/2 -1
         fft_a(2*(n1 +i1), i2) = real(fft_input(n1/2 +i1, n2/2 +i2))
@@ -169,18 +167,18 @@ subroutine fft3d(type, fft_input)
     do i1 = -n1/2, -1
       do i2 = -n2/2, -1
         do i3 = -n3/2, -1
-          fft_a(2*(n1 +i1), n2/2 +i2, n3/2 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
-          fft_a(2*(n1 +i1) +1, n2/2 +i2, n3/2 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(n1 +i1), n2 +i2, n3 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(n1 +i1) +1, n2 +i2, n3 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
         enddo
         do i3 = 0, n3/2 -1
-          fft_a(2*(n1 +i1), n2/2 +i2, i3) = real(fft_input(n1/2 +i1, n2/2 +i2, i3))
-          fft_a(2*(n1 +i1) +1, n2/2 +i2, i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, i3))
+          fft_a(2*(n1 +i1), n2 +i2, i3) = real(fft_input(n1/2 +i1, n2/2 +i2, i3))
+          fft_a(2*(n1 +i1) +1, n2 +i2, i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, i3))
         enddo
       enddo
       do i2 = 0, n2/2 -1
         do i3 = -n3/2, -1
-          fft_a(2*(n1 +i1), i2, n3/2 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
-          fft_a(2*(n1 +i1) +1, i2, n3/2 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(n1 +i1), i2, n3 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(n1 +i1) +1, i2, n3 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
         enddo
         do i3 = 0, n3/2 -1
           fft_a(2*(n1 +i1), i2, i3) = real(fft_input(n1/2 +i1, n2/2 +i2, i3))
@@ -191,8 +189,8 @@ subroutine fft3d(type, fft_input)
     do i1 = 0, n1/2 -1
       do i2 = -n2/2, -1
         do i3 = -n3/2, -1
-          fft_a(2*(i1), n2 +i2, n3/2 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
-          fft_a(2*(i1) +1, n2 +i2, n3/2 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(i1), n2 +i2, n3 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(i1) +1, n2 +i2, n3 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
         enddo
         do i3 = 0, n3/2 -1
           fft_a(2*(i1), n2 +i2, i3) = real(fft_input(n1/2 +i1, n2/2 +i2, i3))
@@ -201,7 +199,7 @@ subroutine fft3d(type, fft_input)
       enddo
       do i2 = 0, n2/2 -1
         do i3 = -n3/2, -1
-          fft_a(2*(i1), i2, n3/2 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
+          fft_a(2*(i1), i2, n3 +i3) = real(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
           fft_a(2*(i1) +1, i2, n3/2 +i3) = aimag(fft_input(n1/2 +i1, n2/2 +i2, n3/2 +i3))
         enddo
         do i3 = 0, n3/2 -1
