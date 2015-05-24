@@ -1,8 +1,8 @@
-# ver2 pauli
+# ver3 double slit 1d
 
 TARGET = exe
-OBJECTS = fftsg.o main.o 
-COMMON_MOD = fftsg.f08 main.f08
+OBJECTS = fftsg.o ch.o main.o 
+COMMON_MOD = fftsg.f08 ch.f08 main.f08
 
 F08 = /usr/local/bin/gfortran
 FFLAGS = -fimplicit-none -fbounds-check
