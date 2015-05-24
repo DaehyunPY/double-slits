@@ -1,4 +1,4 @@
-# ver4 double slit 2d
+# ver5 ion
 
 TARGET = exe
 OBJECTS = fftsg.o ch.o main.o 
